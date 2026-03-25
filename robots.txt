@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /pancakeswap/
+Sitemap: https://PancakeSwap-Chain.github.io/sitemap.xml

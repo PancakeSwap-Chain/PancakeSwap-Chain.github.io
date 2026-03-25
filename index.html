@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PancakeSwap — Fees, Features and Risk Guide</title>
+  <meta name="description" content="PancakeSwap is a leading BNB Chain DEX for swapping, farming, and liquidity. Learn how it works, key fees, and risks before you start.">
+  <link rel="canonical" href="https://PancakeSwap-Chain.github.io/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="PancakeSwap — Fees, Features and Risk Guide">
+  <meta property="og:description" content="PancakeSwap is a leading BNB Chain DEX for swapping, farming, and liquidity. Learn how it works, key fees, and risks before you start.">
+  <meta property="og:url" content="https://PancakeSwap-Chain.github.io/">
+  <meta property="og:type" content="article">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "name": "PancakeSwap — Fees, Features and Risk Guide", "description": "PancakeSwap is a leading BNB Chain DEX for swapping, farming, and liquidity. Learn how it works, key fees, and risks before you start.", "url": "https://PancakeSwap-Chain.github.io/", "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://"}, {"@type": "ListItem", "position": 2, "name": "PancakeSwap — Fees, Features and Risk Guide"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is PancakeSwap used for?", "acceptedAnswer": {"@type": "Answer", "text": "PancakeSwap is used for swapping tokens on BNB Chain, providing liquidity to pools, earning rewards through farming or staking, and accessing DeFi tools without a centralized exchange. Users connect a crypto wallet, approve tokens, and interact directly with smart contracts on-chain."}}, {"@type": "Question", "name": "Is PancakeSwap the same as a centralized crypto exchange?", "acceptedAnswer": {"@type": "Answer", "text": "No. PancakeSwap is a decentralized exchange, so users trade from their own wallets instead of depositing funds into a custodial account. That gives you more control, but it also means you are responsible for wallet security, approvals, and transaction review."}}, {"@type": "Question", "name": "What fees do you pay when using PancakeSwap?", "acceptedAnswer": {"@type": "Answer", "text": "The main costs are swap fees, BNB gas fees, slippage, and price impact. In deep pools, gas may be a minor part of total cost. In thin or volatile pools, execution quality can matter more than the posted fee."}}, {"@type": "Question", "name": "Can you lose money providing liquidity on PancakeSwap?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A liquidity provider can lose relative value through impermanent loss if the paired assets move sharply apart in price. Fee income and farm rewards may offset that, but they do not remove the risk."}}, {"@type": "Question", "name": "Is PancakeSwap safe to use?", "acceptedAnswer": {"@type": "Answer", "text": "PancakeSwap can be used safely only if you manage the main risks well: phishing, unsafe approvals, bad token contracts, bridge issues, and smart contract exposure. The U.S. SEC's <a href=\"https://www.sec.gov/investor-alerts-and-bulletins\">investor alerts and bulletins</a> are a useful reminder to verify claims and stay skeptical of unrealistic returns."}}, {"@type": "Question", "name": "Do you need a special wallet for PancakeSwap?", "acceptedAnswer": {"@type": "Answer", "text": "You need a compatible crypto wallet that can connect to decentralized applications, such as Trust Wallet or a MetaMask setup configured for the correct network. The important part is not the brand alone. It is making sure the wallet is legitimate, updated, and connected to the correct chain before signing transactions."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ BASE THEME — Component Framework ═══ */
+/* All components use these CSS variables. */
+/* Theme presets override specific values.  */
+/* Assembler injects --primary from AI.     */
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── CTA fallback ── */
+  --cta-bg: linear-gradient(135deg, #6366f1, #4f46e5);
+  --cta-text: #fff;
+  --cta-glow: rgba(99,102,241,0.25);
+
+  /* ── Shadows (fallback — presets may override) ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+
+  /* ── Radius ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ── Typography (sizing only — fonts set by preset + assembler) ── */
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-size: 17px;
+  --line-height: 1.7;
+
+  /* ── Layout ── */
+  --content-width: 760px;
+  --page-width: 1100px;
+  --section-gap: 56px;
+  --container-padding: 24px;
+}
+
+/* ── Base Typography ── */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  color: var(--text);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 16px; }
+h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; margin-bottom: 10px; }
+h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+
+p { margin-bottom: 1em; color: var(--text-2); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--primary-hover); }
+
+strong { color: var(--text); font-weight: 600; }
+
+ul, ol { padding-left: 1.5em; margin-bottom: 1em; color: var(--text-2); }
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--primary); }
+
+/* ── Layout Containers ── */
+.page-wrapper {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Full-width wrapper for hero, CTA sections */
+.full-width {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+main {
+  padding: var(--section-gap) 0;
+}
+
+main > section,
+main > .component {
+  margin-bottom: var(--section-gap);
+}
+
+/* ── Card Base ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--primary-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2), 0 0 0 1px var(--primary-glow);
+}
+.card h4 { margin-bottom: 8px; }
+.card .highlight {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Card Grid ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* ── CTA Button ── */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px var(--cta-glow);
+  letter-spacing: 0.02em;
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--cta-glow), 0 0 0 2px var(--primary-glow);
+  color: var(--cta-text);
+}
+
+/* ── Table Base ── */
+.table-wrap {
+  overflow-x: auto;
+  margin: 20px 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.table-wrap th {
+  background: var(--bg-subtle);
+  color: var(--text);
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+.table-wrap td {
+  padding: 14px 18px;
+  color: var(--text-2);
+  border-bottom: 1px solid var(--border);
+}
+.table-wrap tr:last-child td { border-bottom: none; }
+.table-wrap tr:hover td { background: var(--bg-card-hover); }
+.table-wrap tr:nth-child(even) td { background: var(--bg-subtle); }
+.table-wrap tr:first-child td { color: var(--primary); font-weight: 500; }
+
+/* ── FAQ Accordion ── */
+details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+details:hover { border-color: var(--border-hover); }
+details[open] { border-color: var(--primary-glow); }
+details summary {
+  padding: 18px 22px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg-card);
+  transition: background 0.2s, color 0.2s;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  transition: transform 0.3s, color 0.2s;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+details[open] summary::after { content: '\2212'; color: var(--primary); }
+details[open] summary { border-bottom: 1px solid var(--border); color: var(--primary); }
+details > div, details > p {
+  padding: 18px 22px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  :root {
+    --font-size: 16px;
+    --section-gap: 36px;
+    --container-padding: 16px;
+  }
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  :root { --container-padding: 12px; }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.35rem; }
+}
+
+/* ── Utility ── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ── Scroll Progress Bar ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px; background: var(--primary);
+  z-index: 9999; transition: width 0.1s;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* ── Back to Top ── */
+.back-top {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 40px; height: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, background 0.2s;
+  z-index: 100;
+}
+.back-top.visible { opacity: 1; visibility: visible; }
+.back-top:hover { background: var(--bg-card-hover); color: var(--primary); }
+
+/* ── Scroll Animations ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Keyframes ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--primary-glow); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Decorative ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0;
+  border: none;
+}
+
+/* ── Visual Separator (between major sections) ── */
+.visual-sep {
+  text-align: center;
+  padding: 8px 0;
+  color: var(--text-muted);
+  font-size: 0.6rem;
+  letter-spacing: 1em;
+  opacity: 0.4;
+}
+.visual-sep::before { content: '\2022 \2022 \2022'; }
+
+/* ── Icon Circle ── */
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.icon-circle--sm { width: 32px; height: 32px; font-size: 0.85rem; }
+.icon-circle--lg { width: 48px; height: 48px; font-size: 1.15rem; }
+
+/* ── Stat Row ── */
+.stat-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.stat-item {
+  text-align: center;
+}
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Noise texture overlay ── */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════ */
+/* ═══ DESIGN STYLE VARIANTS                      ═══ */
+/* ═══════════════════════════════════════════════════ */
+
+/* ── Card Styles ── */
+.card--bordered {
+  border: 1px solid var(--border);
+  background: transparent;
+  box-shadow: none;
+}
+.card--shadow {
+  border: none;
+  box-shadow: var(--shadow-md);
+  background: var(--bg-card);
+}
+.card--glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: none;
+}
+.card--flat {
+  background: var(--bg-card);
+  border: none;
+  box-shadow: none;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Background Textures ── */
+.page--noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+}
+.page--gradient-mesh::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(var(--primary-rgb, 99,102,241), 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(var(--primary-rgb, 99,102,241), 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(var(--primary-rgb, 99,102,241), 0.03) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Section Dividers ── */
+.page--divider-line .content-section + .content-section {
+  border-top: 1px solid var(--border);
+  padding-top: var(--section-gap, 3rem);
+}
+.page--divider-gradient .content-section + .content-section::before {
+  content: '';
+  display: block;
+  height: 1px;
+  margin-bottom: var(--section-gap, 3rem);
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.page--divider-none .content-section + .content-section {
+  border-top: none;
+}
+
+/* ── Spacing Variants ── */
+.page--spacing-tight {
+  --section-gap: 2rem;
+  --content-gap: 1rem;
+}
+.page--spacing-tight .content-section { margin-bottom: 2rem; }
+.page--spacing-tight .content-section + .content-section { margin-top: 0; }
+
+.page--spacing-normal {
+  --section-gap: 3rem;
+  --content-gap: 1.5rem;
+}
+
+.page--spacing-airy {
+  --section-gap: 4.5rem;
+  --content-gap: 2rem;
+}
+.page--spacing-airy .content-section { margin-bottom: 4.5rem; }
+
+/* ── Animation Variants ── */
+.page--animate-none .fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+.page--animate-subtle .fade-in {
+  transition-duration: 0.4s;
+}
+.page--animate-dynamic .fade-in {
+  transition-duration: 0.6s;
+  transform: translateY(30px);
+}
+
+/* ── TOC Variants ── */
+.toc--sidebar {
+  position: sticky;
+  top: 80px;
+  float: right;
+  width: 220px;
+  margin-left: 2rem;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  font-size: 0.8rem;
+  scrollbar-width: thin;
+}
+@media (max-width: 1024px) {
+  .toc--sidebar {
+    float: none;
+    position: static;
+    width: 100%;
+    margin-left: 0;
+    max-height: none;
+  }
+}
+
+/* Theme: Dark Slate — based on base-slate.html */
+/* Neutral dark gray, violet accent, minimal clean */
+:root {
+  --bg: #121416;
+  --bg-2: #191b1f;
+  --bg-card: rgba(200,210,225,0.04);
+  --bg-card-hover: rgba(200,210,225,0.07);
+  --bg-subtle: rgba(200,210,225,0.02);
+  --primary: #a78bfa;
+  --primary-hover: #8b5cf6;
+  --primary-dim: #7c3aed;
+  --primary-glow: rgba(167,139,250,0.12);
+  --primary-light: rgba(167,139,250,0.08);
+  --cta-bg: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  --cta-text: #fff;
+  --cta-glow: rgba(167,139,250,0.25);
+  --text: #e4e6ea;
+  --text-2: #9ca3af;
+  --text-muted: #6b7280;
+  --border: rgba(200,210,225,0.07);
+  --border-hover: rgba(200,210,225,0.12);
+  --content-width: 720px;
+  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Source Sans 3', -apple-system, sans-serif;
+}
+
+/* ── Footer ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 0;
+  margin-top: var(--section-gap);
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+.footer-copy { margin: 0; }
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 0.8rem;
+}
+.footer-links a:hover { color: var(--text-2); }
+.footer-updated {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+/* ── Navigation ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+.nav-brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-links a {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover {
+  color: var(--text);
+  background: var(--bg-card);
+}
+.nav-links a.cta-pill {
+  background: var(--primary);
+  color: #fff;
+  margin-left: 8px;
+}
+.nav-links a.cta-pill:hover {
+  background: var(--primary-hover);
+}
+
+/* ── More dropdown ── */
+.nav-more {
+  position: relative;
+}
+.nav-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-more-btn:hover {
+  color: var(--text);
+  background: var(--bg-card);
+}
+.nav-more-arrow {
+  font-size: 0.65rem;
+  transition: transform 0.2s;
+}
+.nav-more.open .nav-more-arrow {
+  transform: rotate(180deg);
+}
+.nav-more-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-2, var(--bg));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  padding: 6px;
+  box-shadow: var(--shadow-md);
+  flex-direction: column;
+  z-index: 200;
+}
+.nav-more.open .nav-more-dropdown {
+  display: flex;
+}
+.nav-more-dropdown a {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm, 4px);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-more-dropdown a:hover {
+  color: var(--text);
+  background: var(--bg-card);
+}
+
+/* ── Mobile nav ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-2);
+  transition: transform 0.2s;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-more-btn { display: none; }
+  .nav-more-dropdown {
+    display: flex;
+    position: static;
+    background: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    min-width: auto;
+  }
+}
+
+/* ── Nav behavior modifiers ── */
+.nav--auto-hide {
+  transition: transform 0.3s ease;
+}
+.nav--auto-hide.nav--hidden {
+  transform: translateY(-100%);
+}
+.nav--transparent {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav--transparent.nav--scrolled {
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--border);
+}
+
+/* ── Price Ticker ── */
+.ticker-bar {
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
+  border-top: 1px solid var(--border);
+  padding: 8px 0;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+}
+.ticker-inner {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ticker-inner::-webkit-scrollbar { display: none; }
+.ticker-items {
+  display: flex;
+  gap: 28px;
+  white-space: nowrap;
+  align-items: center;
+}
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+}
+.ticker-item b {
+  color: var(--text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+}
+.ticker-up { color: #10b981; font-weight: 500; }
+.ticker-down { color: #ef4444; font-weight: 500; }
+.ticker-loading {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Content Sections ── */
+.content-section {
+  scroll-margin-top: 72px;
+}
+.content-section h2 {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  position: relative;
+}
+.content-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+}
+.content-section h3 {
+  margin-top: 32px;
+  padding-top: 8px;
+}
+
+/* ── Capsule (featured snippet bait) ── */
+.capsule {
+  background: var(--primary-light);
+  border-left: 3px solid var(--primary);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 24px;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* ── Evidence block ── */
+.evidence {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+.evidence::before {
+  content: '\25C6';
+  color: var(--primary);
+  font-size: 0.7rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* ── Subsection ── */
+.subsection {
+  margin-top: 28px;
+}
+.subsection h3 {
+  margin-top: 0;
+}
+
+/* ── Cards variant ── */
+.section--cards .card-grid {
+  margin-top: 24px;
+}
+.section--cards .card h4 {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.section--cards .card p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--text-2);
+}
+
+/* ── Steps variant ── */
+.steps {
+  counter-reset: step;
+  margin-top: 24px;
+  position: relative;
+  padding-left: 28px;
+}
+/* Connecting line */
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 18px;
+  bottom: 18px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--border));
+  border-radius: 1px;
+}
+.step {
+  counter-increment: step;
+  display: flex;
+  gap: 16px;
+  padding: 22px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.step:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-sm);
+}
+.step::before {
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border);
+}
+.step-content h4 { margin-bottom: 8px; }
+.step-content p { font-size: 0.9rem; margin: 0; color: var(--text-2); }
+/* ── CTA Section (bottom) ── */
+.cta-section {
+  text-align: center;
+  padding: 64px 40px;
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  margin-top: var(--section-gap);
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+}
+.cta-inner h2 {
+  border-bottom: none;
+  margin-bottom: 14px;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+.cta-inner h2::after { display: none; }
+.cta-inner p {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  color: var(--text-2);
+  font-size: 1.05rem;
+}
+
+/* ── Inline CTA (between sections) ── */
+.cta-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--primary-light);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  border-radius: var(--radius-md);
+  margin: 36px 0;
+  transition: border-color 0.2s;
+}
+.cta-inline:hover {
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+.cta-inline p {
+  margin: 0;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 1rem;
+}
+.cta-inline .cta-button {
+  white-space: nowrap;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+}
+
+/* ── Sticky CTA Bar ── */
+.cta-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  padding: 14px 24px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.cta-sticky.visible {
+  transform: translateY(0);
+}
+.cta-sticky p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+
+@media (max-width: 600px) {
+  .cta-section { padding: 40px 24px; }
+  .cta-inline {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* ── Pros & Cons ── */
+.pros-cons-section { scroll-margin-top: 72px; }
+.pros-cons-section h2::after { display: none; }
+
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+.pros-col, .cons-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.pros-col::before, .cons-col::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+.pros-col::before { background: linear-gradient(90deg, #10b981, #34d399); }
+.cons-col::before { background: linear-gradient(90deg, #f43f5e, #fb7185); }
+
+.pros-heading, .cons-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pros-heading { color: #10b981; }
+.cons-heading { color: #f43f5e; }
+.pros-heading::before { content: '\2713'; }
+.cons-heading::before { content: '\2717'; }
+
+.pros-list, .cons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pros-list li, .cons-list li {
+  padding: 8px 0 8px 24px;
+  position: relative;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+}
+.pros-list li:last-child, .cons-list li:last-child { border-bottom: none; }
+.pros-list li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.cons-list li::before {
+  content: '\2013';
+  position: absolute;
+  left: 2px;
+  color: #f43f5e;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .pros-cons-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Comparison Cards variant ── */
+.comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.comp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+.comp-card:first-child {
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 0 1px var(--primary-glow);
+}
+.comp-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.comp-card h4 {
+  margin-bottom: 10px;
+}
+.comp-card .comp-rating {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+}
+.comp-card .comp-details {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  text-align: left;
+}
+.comp-card .comp-details dt {
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 10px;
+}
+/* ═══ HERO — Premium ═══ */
+.hero {
+  text-align: center;
+  padding: 100px var(--container-padding) 72px;
+  position: relative;
+  overflow: hidden;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+/* Radial glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, var(--primary-glow) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Bottom separator */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-2);
+  margin-bottom: 28px;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(8px);
+}
+.hero-badge .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--primary-glow);
+  animation: pulse-glow 2.5s ease infinite;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-2);
+  max-width: 580px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ═══ GRADIENT ═══ */
+.hero--gradient {
+  padding: 120px var(--container-padding) 88px;
+  background: linear-gradient(160deg, var(--bg) 0%, var(--bg-2) 40%, var(--bg) 100%);
+}
+.hero--gradient::before {
+  width: 1100px;
+  height: 600px;
+  opacity: 0.45;
+}
+.hero--gradient h1 {
+  background: linear-gradient(135deg, var(--text) 30%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══ SPLIT ═══ */
+.hero--split {
+  text-align: left;
+  padding: 80px var(--container-padding) 64px;
+}
+.hero--split .hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: var(--page-width);
+}
+.hero--split .hero-subtitle {
+  margin: 0 0 32px;
+  max-width: none;
+}
+.hero--split .hero-cta { justify-content: flex-start; }
+.hero-visual {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--primary-light) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, var(--primary-glow) 100%);
+}
+
+/* ═══ MINIMAL ═══ */
+.hero--minimal {
+  padding: 56px var(--container-padding) 40px;
+}
+.hero--minimal::before { display: none; }
+.hero--minimal::after { opacity: 0.5; }
+.hero--minimal .hero-subtitle { margin-bottom: 0; }
+.hero--minimal .hero-inner { max-width: 640px; }
+
+/* ═══ Responsive ═══ */
+@media (max-width: 768px) {
+  .hero { padding: 72px var(--container-padding) 48px; }
+  .hero-subtitle { font-size: 1.05rem; }
+  .hero--gradient { padding: 88px var(--container-padding) 56px; }
+  .hero--split .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero--split .hero-cta { justify-content: center; }
+  .hero-visual { display: none; }
+}
+/* ── FAQ Section ── */
+.faq-section { scroll-margin-top: 72px; }
+.faq-section h2 {
+  margin-bottom: 24px;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── FAQ Grid variant ── */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+.faq-grid .faq-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  transition: border-color 0.2s;
+}
+.faq-grid .faq-card:hover {
+  border-color: var(--border-hover);
+}
+.faq-grid .faq-card h4 {
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.faq-grid .faq-card p {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Table of Contents ── */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  margin-bottom: var(--section-gap);
+}
+.toc-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.toc-list {
+  padding-left: 0;
+  margin: 0;
+  counter-reset: toc;
+  list-style: none;
+}
+.toc-list li {
+  counter-increment: toc;
+  margin-bottom: 4px;
+}
+.toc-list li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+}
+.toc-list li a:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+.toc-list li a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 24px;
+}
+
+@media (max-width: 600px) {
+  .faq-grid { grid-template-columns: 1fr; }
+}
+/* ── Key Takeaway / Blockquote ── */
+.key-takeaway {
+  padding: 24px 28px;
+  background: var(--bg-card);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 28px 0;
+  position: relative;
+}
+.key-takeaway::before {
+  content: '\201C';
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 3rem;
+  color: var(--primary-glow);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+.key-takeaway p {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.65;
+  padding-left: 8px;
+}
+
+/* ── Definition Box ── */
+.definition-box {
+  padding: 22px 26px;
+  background: var(--primary-light);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+}
+.definition-box p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.7;
+}
+.definition-box strong {
+  color: var(--primary);
+}
+/* ── Trust Section ── */
+.trust-section { scroll-margin-top: 72px; }
+.trust-points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.trust-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.9rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  transition: border-color 0.2s;
+}
+.trust-point:hover {
+  border-left-color: var(--primary-hover);
+}
+.trust-point::before {
+  content: '\2713';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Disclaimer ── */
+.disclaimer-block {
+  padding: 18px 22px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-top: 28px;
+}
+.disclaimer-block p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.65;
+}
+.disclaimer-block strong {
+  color: var(--text-2);
+}
+
+:root {
+  --primary: #16B3C4;
+  --primary-hover: #1298a6;
+  --primary-dim: #0f7d89;
+  --primary-glow: rgba(22,179,196,0.12);
+  --primary-light: rgba(22,179,196,0.08);
+  --cta-bg: linear-gradient(135deg, #16B3C4, #1298a6);
+  --cta-glow: rgba(22,179,196,0.25);
+}
+:root { --font-heading: 'Space Grotesk', -apple-system, sans-serif; --font-body: 'Source Sans 3', -apple-system, sans-serif; }
+
+  </style>
+</head>
+<body class="">
+  <div class="progress-bar" id="progress"></div>
+  
+  <nav class="nav">
+  <div class="nav-inner page-wrapper">
+    <a href="/" class="nav-brand">Pancakeswap</a>
+    <div class="nav-links" id="nav-links">
+      <a href="#how-pancakeswap-compares-with-centralized-exchanges-and-othe">How PancakeSwap compares</a>
+      <a href="#how-pancakeswap-works-under-the-hood">How PancakeSwap works</a>
+      <a href="#what-you-can-do-on-pancakeswap-beyond-simple-swaps">What you can</a>
+      <div class="nav-more">
+        <button class="nav-more-btn" id="nav-more-btn">More <span class="nav-more-arrow">&#9662;</span></button>
+        <div class="nav-more-dropdown" id="nav-more-dropdown">
+          <a href="#the-real-cost-of-trading-on-pancakeswap">The real cost</a>
+        <a href="#when-liquidity-provision-and-farming-make-sense">When liquidity provision</a>
+        <a href="#what-to-watch-out-for-with-pancakeswap-security-and-risk">What to watch</a>
+        <a href="#which-alternatives-to-pancakeswap-are-worth-comparing">Which alternatives to</a>
+        <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <a href="/pancakeswap/" class="cta-pill">Get Started</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero hero--gradient noise-overlay">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> Trusted Lending Guide</div>
+    <h1>PancakeSwap Explained: How the BNB Chain DEX Works, What You Can Do, and What to Watch Out For</h1>
+    <p class="hero-subtitle">PancakeSwap lets users swap tokens, add liquidity, and earn yield directly on-chain without a centralized exchange. This guide compares the PancakeSwap platform with CEX and DEX alternatives first, then walks through swaps, fees, farming, and the main security tradeoffs in the order most users encounter them.</p>
+    <div class="hero-cta"><a href="/pancakeswap/" class="cta-button">Explore PancakeSwap &rarr;</a></div>
+    
+  </div>
+</section>
+<main class="page-wrapper">
+<nav class="toc" aria-label="Table of Contents">
+  <h2 class="toc-title">Contents</h2>
+  <ol class="toc-list">
+    <li><a href="#how-pancakeswap-compares-with-centralized-exchanges-and-othe">How PancakeSwap compares with centralized exchanges and other DEXs</a></li>
+    <li><a href="#how-pancakeswap-works-under-the-hood">How PancakeSwap works under the hood</a></li>
+    <li><a href="#what-you-can-do-on-pancakeswap-beyond-simple-swaps">What you can do on PancakeSwap beyond simple swaps</a></li>
+    <li><a href="#the-real-cost-of-trading-on-pancakeswap">The real cost of trading on PancakeSwap</a></li>
+    <li><a href="#when-liquidity-provision-and-farming-make-sense">When liquidity provision and farming make sense</a></li>
+    <li><a href="#what-to-watch-out-for-with-pancakeswap-security-and-risk">What to watch out for with PancakeSwap security and risk</a></li>
+    <li><a href="#which-alternatives-to-pancakeswap-are-worth-comparing">Which alternatives to PancakeSwap are worth comparing</a></li>
+    <li><a href="#comparison">Comparison</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ol>
+</nav>
+
+<section class="content-section" id="how-pancakeswap-compares-with-centralized-exchanges-and-othe">
+  <h2>How PancakeSwap compares with centralized exchanges and other DEXs</h2>
+  <p class="capsule">PancakeSwap is a decentralized exchange on BNB Chain that gives users direct wallet-based access to token swaps, liquidity pools, and yield features. Compared with centralized exchanges, it offers more control and broader on-chain access, but users take on more responsibility for execution quality, wallet security, and smart contract risk.</p>
+  <p class="evidence">PancakeSwap operates as a DEX on BNB Chain where users trade from their own wallets rather than depositing funds into a custodial account.</p>
+  <p><strong>PancakeSwap</strong> is best understood as a self-custody trading venue first, not just another exchange interface. You connect a wallet, approve a token, and trade against liquidity pools through an <strong>automated market maker</strong> instead of matching with another trader on a centralized order book.</p><p>That changes the tradeoff. A centralized exchange usually offers easier onboarding, account recovery, and fiat rails. The PancakeSwap exchange gives faster access to long-tail BNB Chain assets, direct <strong>on-chain trading</strong>, and DeFi features such as liquidity provision and yield farming.</p><ul><li><strong>Better than many CEX flows for:</strong> self-custody, new token access, wallet-native DeFi usage</li><li><strong>Worse than many CEX flows for:</strong> support, reversibility, and beginner protection</li><li><strong>Different from Ethereum DEXs:</strong> lower typical network costs because of <strong>BNB gas fees</strong>, but ecosystem quality varies by token and bridge source</li></ul><p>For readers new to DeFi mechanics, <a href="https://ethereum.org/en/defi/"><a href="https://ethereum.org/en/defi/" target="_blank" rel="noopener noreferrer">decentralized finance basics</a></a> provide a useful baseline before using PancakeSwap on BNB Chain. If you want a broader network context, the <a href="https://www.bnbchain.org/en"><a href="https://www.bnbchain.org/en" target="_blank" rel="noopener noreferrer">BNB Chain network overview</a></a> explains the chain PancakeSwap is most closely associated with. </p>
+  <div class="subsection"><h3>Where PancakeSwap fits in a crypto stack</h3><p>The PancakeSwap platform sits between a wallet and a smart contract layer. Trust Wallet or a MetaMask setup handles keys and signatures, while PancakeSwap routes token swaps and liquidity actions to smart contracts and pools.</p></div>
+<div class="subsection"><h3>Why the comparison matters before first use</h3><p>Your expectations should change based on venue type. On PancakeSwap DEX, failed transactions, slippage tolerance settings, token approvals, and network selection matter more than they do on most centralized apps.</p></div>
+
+</section>
+
+<section class="content-section" id="how-pancakeswap-works-under-the-hood">
+  <h2>How PancakeSwap works under the hood</h2>
+  <p class="capsule">PancakeSwap uses liquidity pools and smart contracts to process trades through an AMM model. Users sign transactions from a wallet, accept quoted prices and slippage settings, and pay network gas plus protocol-level trading costs.</p>
+  <div class="steps">
+    <div class="step"><div class="step-content"><h4>Connect a wallet</h4><p>Use a supported wallet and make sure the correct network is selected before signing anything.</p></div></div>
+<div class="step"><div class="step-content"><h4>Approve the token</h4><p>The first interaction usually requires a token approval so the smart contract can access the asset you want to trade.</p></div></div>
+<div class="step"><div class="step-content"><h4>Review quote and slippage</h4><p>Check route, minimum received, swap fees, and price impact before confirming.</p></div></div>
+<div class="step"><div class="step-content"><h4>Sign and verify on-chain</h4><p>Submit the transaction, wait for confirmation, and verify balances in your wallet after settlement.</p></div></div>
+
+  </div>
+</section>
+
+<section class="content-section section--cards" id="what-you-can-do-on-pancakeswap-beyond-simple-swaps">
+  <h2>What you can do on PancakeSwap beyond simple swaps</h2>
+  <p class="capsule">PancakeSwap is more than a token swap interface. It also supports liquidity provision, LP token positions, yield farming, staking-style reward products, and access to broader decentralized finance workflows on BNB Chain.</p>
+  <div class="card-grid">
+    <div class="card"><h4>Swaps</h4><p>Best for users who want quick access to BNB Chain assets with direct wallet settlement.</p><span class="highlight">Lowest complexity</span></div>
+<div class="card"><h4>Liquidity</h4><p>Adds earning potential from fees, but exposes you to pool composition changes and impermanent loss.</p><span class="highlight">Medium complexity</span></div>
+<div class="card"><h4>Farming and rewards</h4><p>Can increase nominal yield, though risk rises with token volatility and incentive dependence.</p><span class="highlight">Highest complexity</span></div>
+
+  </div>
+</section>
+
+<div class="cta-inline">
+  <p>If you are comparing self-custody trading routes, review alternatives before making your first on-chain move.</p>
+  <a href="/pancakeswap/" class="cta-button">Compare PancakeSwap Options &rarr;</a>
+</div>
+
+<section class="content-section" id="the-real-cost-of-trading-on-pancakeswap">
+  <h2>The real cost of trading on PancakeSwap</h2>
+  <p class="capsule">PancakeSwap costs are not limited to visible swap fees. Real trading cost includes network gas, pool fees, slippage, price impact, and the spread between the expected quote and the final execution result.</p>
+  <p class="evidence">For thin pools, slippage and price impact can outweigh the posted fee, making total cost materially higher than the quote suggests.</p>
+  <p>The visible fee is only part of the bill. When trading on PancakeSwap, your actual cost includes <strong>swap fees</strong>, gas, price movement during confirmation, and <a href="https://www.investopedia.com/terms/l/liquidity.asp" target="_blank" rel="noopener noreferrer">liquidity</a>-related slippage.</p><p>Small trades in deep pools can be inexpensive. Large trades in thin pools can become expensive quickly, even when the displayed fee looks modest. That is why experienced users check minimum received, route quality, and price impact before they care about yield claims or token narratives.</p><p>If you need a neutral refresher on what liquidity means in market terms, Investopedia's explanation of <a href="https://www.investopedia.com/terms/l/liquidity.asp">liquidity</a> is useful context for understanding why execution quality changes across pools.</p><table><tr><th>Cost component</th><th>What it means</th><th>Why it matters</th></tr><tr><td>Pool fee</td><td>The protocol trading fee charged on the swap</td><td>Direct visible cost</td></tr><tr><td>BNB gas fees</td><td>Network fee for processing the transaction</td><td>Usually small, still material for frequent users</td></tr><tr><td>Slippage</td><td>Difference between expected and executed price</td><td>Can exceed visible fees in volatile pools</td></tr><tr><td>Price impact</td><td>Your trade moving the market in the pool</td><td>Large orders suffer more</td></tr></table>
+  <div class="subsection"><h3>Why gas is not the main fee most of the time</h3><p>On BNB Chain, network costs are often lower than on some other ecosystems. In practice, poor routing and shallow liquidity usually matter more than raw gas for medium or large swaps.</p></div>
+<div class="subsection"><h3>How to reduce avoidable execution cost</h3><p>Split larger orders, use deeper pools, verify token liquidity, and avoid rushing trades during sharp volatility. Those simple steps often improve execution more than hunting for a tiny fee difference.</p></div>
+
+</section>
+
+<section class="content-section" id="when-liquidity-provision-and-farming-make-sense">
+  <h2>When liquidity provision and farming make sense</h2>
+  <p class="capsule">Liquidity provision can make sense when you understand pool composition, fee generation, and the risk of impermanent loss. Farming may improve returns, but only if the extra rewards compensate for volatility, emissions pressure, and contract exposure.</p>
+  <p class="evidence">Impermanent loss becomes more severe as the relative price movement between the paired assets increases.</p>
+  <p>Providing liquidity is not automatically the next step after a successful swap. It makes sense when you can tolerate holding both assets, understand how fee income works, and accept the chance of <strong>impermanent loss</strong>.</p><p>That loss is easiest to think about as opportunity cost versus simply holding the tokens outside the pool. If one asset moves sharply against the other, your pooled position may underperform a passive hold even after fee income and farm rewards.</p><ul><li>Use liquidity provision when you already want exposure to both assets</li><li>Be cautious with volatile or newly launched pairs</li><li>Treat very high APR figures as temporary until proven otherwise</li><li>Review whether farm rewards are paid in a token you actually want to hold</li></ul><p></p>
+  <div class="subsection"><h3>A practical filter for LP opportunities</h3><p>Start with pool depth, token quality, and recent volume. Then look at whether fee generation, not just emissions, supports the projected return.</p></div>
+<div class="subsection"><h3>Why APR alone is a poor decision metric</h3><p>A high displayed APR can collapse if incentives are reduced or if the reward token falls in price. Sustainable returns come from durable activity, not only from short-term emissions.</p></div>
+
+</section>
+
+<section class="content-section" id="what-to-watch-out-for-with-pancakeswap-security-and-risk">
+  <h2>What to watch out for with PancakeSwap security and risk</h2>
+  <p class="capsule">The biggest risks on PancakeSwap are not limited to hacks. Users also face malicious tokens, unsafe approvals, fake interfaces, bridge risk, wallet compromise, and execution errors caused by poor settings or rushed decisions.</p>
+  <p class="evidence">On-chain transactions are generally irreversible, so mistakes involving wallet permissions, wrong token contracts, or malicious links can be costly.</p>
+  <p>The main risk with PancakeSwap is user-side error interacting with open markets and smart contracts. Self-custody gives control, but it also removes the safety net many traders expect from centralized platforms.</p><ul><li><strong>Smart contract risk:</strong> bugs or exploit paths can affect contracts and connected protocols</li><li><strong>Token risk:</strong> some assets have weak liquidity, transfer taxes, or malicious code patterns</li><li><strong>Approval risk:</strong> unlimited token approvals can create avoidable exposure</li><li><strong>Bridge risk:</strong> moving assets across chains adds another attack surface</li><li><strong>Interface risk:</strong> phishing sites and fake social links remain common</li></ul><p>Investor.gov's overview of <a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/cryptocurrency"><a href="https://www.investor.gov/introduction-investing/investing-basics/investment-products/cryptocurrency" target="_blank" rel="noopener noreferrer">cryptocurrency risks</a></a> is a useful non-industry reminder that digital assets involve volatility, custody risk, and limited recourse when transactions go wrong.</p>
+  <div class="subsection"><h3>Red flags before approving a transaction</h3><p>Pause if the token contract is unfamiliar, liquidity is unusually thin, the route looks odd, or the approval request is broader than expected. A few extra seconds of review can prevent the most common avoidable losses.</p></div>
+<div class="subsection"><h3>Risk controls that actually help</h3><p>Use official links, start with small test transactions, keep wallet software updated, separate trading funds from long-term holdings, and review approvals periodically.</p></div>
+
+</section>
+
+<section class="content-section section--cards" id="which-alternatives-to-pancakeswap-are-worth-comparing">
+  <h2>Which alternatives to PancakeSwap are worth comparing</h2>
+  <p class="capsule">PancakeSwap is strongest for BNB Chain users who want broad DeFi access and low-friction on-chain trading. The best alternative depends on whether you value fiat access, deeper order-book liquidity, multi-chain reach, or simpler risk controls.</p>
+  <div class="card-grid">
+    <div class="card"><h4>PancakeSwap</h4><p>Good for self-custody users who want BNB Chain token access, AMM trading, and DeFi features in one place.</p><span class="highlight">Best for BNB Chain DeFi</span></div>
+<div class="card"><h4>Centralized exchange</h4><p>Good for fiat on-ramps, account support, and simpler execution for mainstream assets.</p><span class="highlight">Best for convenience</span></div>
+<div class="card"><h4>Other DEXs</h4><p>Useful when liquidity is stronger on another chain or when a multi-chain strategy matters more than BNB-native depth.</p><span class="highlight">Best for chain-specific liquidity</span></div>
+
+  </div>
+</section>
+
+<section class="content-section comparison-section" id="comparison">
+  <h2>PancakeSwap vs common alternatives</h2>
+  <p class="capsule">Choose PancakeSwap if you want BNB Chain-native DeFi access from your own wallet. Choose a centralized exchange if ease of use and support matter more than direct on-chain control.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Option</th><th>Best for</th><th>Main advantage</th><th>Main drawback</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>PancakeSwap</td><td>BNB Chain DeFi users</td><td>Direct wallet-based swaps, liquidity pools, and reward tools</td><td>Higher user responsibility and smart contract risk</td></tr>
+<tr><td>Centralized exchange</td><td>Fiat access and mainstream trading</td><td>Customer support and easier onboarding</td><td>Custodial risk and less direct DeFi access</td></tr>
+<tr><td>Other DEXs</td><td>Chain-specific opportunities</td><td>May offer stronger liquidity on another ecosystem</td><td>Fragmented experience across wallets and bridges</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="content-section faq-section" id="faq">
+  <h2>PancakeSwap FAQ</h2>
+  <div class="faq-list">
+    <details><summary>What is PancakeSwap used for?</summary><div><p>PancakeSwap is used for swapping tokens on BNB Chain, providing liquidity to pools, earning rewards through farming or staking, and accessing DeFi tools without a centralized exchange. Users connect a crypto wallet, approve tokens, and interact directly with smart contracts on-chain.</p></div></details>
+<details><summary>Is PancakeSwap the same as a centralized crypto exchange?</summary><div><p>No. PancakeSwap is a decentralized exchange, so users trade from their own wallets instead of depositing funds into a custodial account. That gives you more control, but it also means you are responsible for wallet security, approvals, and transaction review.</p></div></details>
+<details><summary>What fees do you pay when using PancakeSwap?</summary><div><p>The main costs are swap fees, BNB gas fees, slippage, and price impact. In deep pools, gas may be a minor part of total cost. In thin or volatile pools, execution quality can matter more than the posted fee.</p></div></details>
+<details><summary>Can you lose money providing liquidity on PancakeSwap?</summary><div><p>Yes. A liquidity provider can lose relative value through impermanent loss if the paired assets move sharply apart in price. Fee income and farm rewards may offset that, but they do not remove the risk.</p></div></details>
+<details><summary>Is PancakeSwap safe to use?</summary><div><p>PancakeSwap can be used safely only if you manage the main risks well: phishing, unsafe approvals, bad token contracts, bridge issues, and smart contract exposure. The U.S. SEC&#x27;s &lt;a href=&quot;https://www.sec.gov/investor-alerts-and-bulletins&quot;&gt;investor alerts and bulletins&lt;/a&gt; are a useful reminder to verify claims and stay skeptical of unrealistic returns.</p></div></details>
+<details><summary>Do you need a special wallet for PancakeSwap?</summary><div><p>You need a compatible crypto wallet that can connect to decentralized applications, such as Trust Wallet or a MetaMask setup configured for the correct network. The important part is not the brand alone. It is making sure the wallet is legitimate, updated, and connected to the correct chain before signing transactions.</p></div></details>
+
+  </div>
+</section>
+
+<div class="disclaimer-block">
+  <p><strong>Disclaimer:</strong> This content is for educational purposes only and is not investment, legal, or tax advice. Crypto assets, decentralized exchanges, liquidity pools, and yield products carry substantial risk, including loss of principal. Always verify token contracts, review official documentation, and assess your own risk tolerance before using PancakeSwap.</p>
+</div>
+
+<section class="cta-section" id="cta">
+  <div class="cta-inner">
+    <h2>Ready to evaluate PancakeSwap for your needs?</h2>
+    <p>Use the comparisons above to decide whether PancakeSwap fits your trading, liquidity, or DeFi workflow before you connect a wallet.</p>
+    <a href="/pancakeswap/" class="cta-button">Get Started with PancakeSwap &rarr;</a>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="page-wrapper">
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; PancakeSwap</p>
+      
+      <p class="footer-updated">Last updated: 2026-03-25</p>
+    </div>
+  </div>
+</footer>
+
+  <button class="back-top" id="btt" aria-label="Back to top">&uarr;</button>
+  <script>
+    /* Progress bar */
+    window.addEventListener('scroll',function(){var s=document.documentElement,t=s.scrollHeight-s.clientHeight;document.getElementById('progress').style.width=t?((s.scrollTop/t)*100)+'%':'0%'});
+    /* Back to top */
+    var btt=document.getElementById('btt');window.addEventListener('scroll',function(){btt.classList.toggle('visible',window.scrollY>400)});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+    
+/* Nav toggle */
+var nt=document.getElementById('nav-toggle'),nl=document.getElementById('nav-links');
+if(nt&&nl){nt.addEventListener('click',function(){nl.classList.toggle('open')})}
+/* Nav More dropdown */
+var nm=document.getElementById('nav-more-btn'),nd=nm&&nm.closest('.nav-more');
+if(nm&&nd){nm.addEventListener('click',function(e){e.stopPropagation();nd.classList.toggle('open')});document.addEventListener('click',function(){nd.classList.remove('open')})}
+/* Nav auto-hide on scroll */
+var nav=document.querySelector('.nav--auto-hide');
+if(nav){var ls=0;window.addEventListener('scroll',function(){var c=window.scrollY;if(c>ls&&c>80){nav.classList.add('nav--hidden')}else{nav.classList.remove('nav--hidden')}ls=c})}
+/* Nav transparent until scroll */
+var tn=document.querySelector('.nav--transparent');
+if(tn){window.addEventListener('scroll',function(){tn.classList.toggle('nav--scrolled',window.scrollY>60)})}
+/* Sticky CTA show on scroll */
+var sc=document.querySelector('.cta-sticky');
+if(sc){window.addEventListener('scroll',function(){sc.classList.toggle('visible',window.scrollY>800)})}
+/* Scroll fade-in animations */
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.content-section,.card,.step,.faq-section,.cta-section,.trust-section,.comparison-section,.pros-cons-section,.toc,.pricing-section,.testimonials-section,.stats-bar').forEach(function(el){el.classList.add('fade-in');io.observe(el)});
+/* CoinGecko price ticker */
+var ticker=document.getElementById('price-ticker');
+if(ticker){var coins=['bitcoin','ethereum','matic-network','solana','binancecoin'];function updTicker(){fetch('https://api.coingecko.com/api/v3/simple/price?ids='+coins.join(',')+'&vs_currencies=usd&include_24hr_change=true').then(function(r){return r.json()}).then(function(d){var h='';coins.forEach(function(c){if(d[c]){var p=d[c].usd,ch=d[c].usd_24h_change||0,cl=ch>=0?'ticker-up':'ticker-down',nm=c.split('-')[0].toUpperCase();h+='<span class="ticker-item"><b>'+nm+'</b> $'+p.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})+' <span class="'+cl+'">'+(ch>=0?'+':'')+ch.toFixed(1)+'%</span></span>'}});document.getElementById('ticker-items').innerHTML=h}).catch(function(){})}updTicker();setInterval(updTicker,60000)}
+
+  </script>
+</body>
+</html>
