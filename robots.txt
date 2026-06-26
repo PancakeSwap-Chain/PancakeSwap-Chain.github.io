@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://pancakeswap-chain.github.io/sitemap.xml
